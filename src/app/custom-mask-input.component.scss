@@ -1,0 +1,63 @@
+.input-row { display: flex; gap: 10px; }
+.input-shell { position: relative; }
+input,
+.mask-overlay {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-family: 'Courier New', Consolas, monospace;
+  letter-spacing: 0.12em;
+  box-sizing: border-box;
+  height: 48px;
+}
+
+input {
+  background: transparent;
+  color: transparent;
+  caret-color: #111827;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+.mask-overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: transparent;
+  color: #111827;
+  white-space: pre;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.toggle-visibility {
+  padding: 0 12px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  color: #334155;
+}
+
+.error-text {
+  margin-top: 8px;
+  color: #dc2626;
+  font-size: 0.9rem;
+}
