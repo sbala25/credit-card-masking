@@ -25,11 +25,12 @@ export class AppComponent implements OnDestroy {
     const input = event.target as HTMLInputElement;
     this.activeInput = input;
 
+    const previousLength = this.cardNumber.length;
     this.cardNumber = this.sanitizeCardNumber(input.value);
     this.cardControl.setValue(this.cardNumber, { emitEvent: false });
     const caretPosition = Math.min(this.cardNumber.length, input.selectionStart ?? this.cardNumber.length);
 
-    this.revealMostRecentDigit = true;
+    this.revealMostRecentDigit = this.cardNumber.length >= previousLength;
     this.refreshDisplay(this.cardNumber, caretPosition);
 
     this.scheduleMaskReset();

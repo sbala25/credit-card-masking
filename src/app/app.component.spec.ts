@@ -32,6 +32,29 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance.displayValue).toBe('****');
   }));
 
+  it('should mask all digits when input is shortened', fakeAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const input = fixture.nativeElement.querySelector('input');
+    input.value = '4111';
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    // Simulate the user deleting one digit
+    input.value = '411';
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.cardNumber).toBe('411');
+    expect(fixture.componentInstance.displayValue).toBe('***');
+
+    tick(201);
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.displayValue).toBe('***');
+  }));
+
   it('should toggle full visibility and submit the real card number', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
